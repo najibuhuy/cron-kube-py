@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: python-app-cronjob
+spec:
+  schedule: "*/5 * * * *"  # Cron schedule (every 5 minutes in this example)
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: python-app-container
+              image: najibalyasyfi/cron-kube-python
+              resources: {}
+          restartPolicy: OnFailure
